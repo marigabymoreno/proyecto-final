@@ -33,14 +33,30 @@ function searchResultados(){
     });
 }
 
+function salvar()
+{
+    this.setAttribute("class", "liked");   
+}
+
 function createInfo() {
 
     resultados.forEach(resultado => {
         const resultados_title = document.createElement("h2");
-        const resultados_midia = document.createElement("img"); 
+        const resultados_midia = document.createElement("img");
+        const fav = document.createElement("button");
+        fav.innerHTML = "salvar";
+        fav.setAttribute("class", "not-liked");
+
+        const icon = document.createElement("i");
+
+        fav.appendChild(icon);
+
+        fav.addEventListener("click", salvar); 
+
         resultados_title.textContent = resultado.title;
         resultados_midia.src = resultado.images.original.url;
         document.querySelector("#resultados").appendChild(resultados_midia);    
+        document.querySelector("#resultados").appendChild(fav);    
     });
 }
 
