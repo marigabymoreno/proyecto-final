@@ -1,9 +1,43 @@
-.not-liked
+body 
 {
-    background: red;
+    margin: 0; 
+    background:rosybrown;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color:rgb(78, 12, 78);
 }
 
-.liked
+h1
 {
-    background: green;
+    font-weight: 400px;
+    font-size: 50px;
+    text-align: center;
+}
+ 
+img 
+{
+    justify-items: center;
+    size: 40px;
+    margin: 15px;
+    border: blue;
+
+}
+
+input 
+{
+    height: 60px;
+    width: 300px;
+    border-radius: 30px;
+    border-color: blueviolet;
+    border-width: 5px;
+
+}
+ 
+button
+{
+    border-radius: 30px;
+    border-color:blueviolet ;
+    height: 30px;
+    width: 100px;
+
 }

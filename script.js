@@ -11,6 +11,7 @@ caja.addEventListener("keyup", function(event) {
     if(event.keyCode == 13) { 
         searchResultados();
     }
+ 
 });
 
 $(window).scroll(function() {
@@ -19,6 +20,8 @@ $(window).scroll(function() {
         searchResultados();
     }
 });
+
+
 
 function searchResultados(){
 
@@ -29,36 +32,44 @@ function searchResultados(){
     fetch(url).then ((response) => response.json()).then((data) => {
          resultados = data.data;
          createInfo();
-
     });
 }
 
 function salvar()
 {
-    this.setAttribute("class", "liked");   
+    this.setAttribute("class", "liked"); 
+    alert("Imagem de id: "+this.id+" foi salva!")  
+
 }
 
 function createInfo() {
 
+
     resultados.forEach(resultado => {
-        const resultados_title = document.createElement("h2");
         const resultados_midia = document.createElement("img");
-        const fav = document.createElement("button");
-        fav.innerHTML = "salvar";
-        fav.setAttribute("class", "not-liked");
 
-        const icon = document.createElement("i");
+        resultados_midia.src = resultado.images.fixed_width
+        .url;
+        resultados_midia.id = resultado.id;
 
-        fav.appendChild(icon);
-
-        fav.addEventListener("click", salvar); 
-
-        resultados_title.textContent = resultado.title;
-        resultados_midia.src = resultado.images.original.url;
-        document.querySelector("#resultados").appendChild(resultados_midia);    
-        document.querySelector("#resultados").appendChild(fav);    
+        resultados_midia.addEventListener("click", salvar)
+        document.querySelector("#resultados").appendChild(resultados_midia);  
+    
     });
 }
 
+// let item = {
+// "id" : id,
+// "title" : title,
+// "url" : url,
+// }
 
-
+// fetch('gifs', {
+// metfod: 'post' ,
+// headers: {
+//     'Accept': 'application/json, text/plain, */*',
+//     'Content-Type': 'application/json'
+// },
+// body: JSON.stringify (item)
+// }).then(res => res.json())
+//   .then(res => console.log(res));
